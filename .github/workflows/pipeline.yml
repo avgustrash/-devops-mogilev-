@@ -6,4 +6,3 @@ jobs:
     steps:
       - name: Print Hello DevOps
         run: echo "Привет из Могилёва! Я запустил пайплайн!"
-      
