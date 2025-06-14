@@ -9,4 +9,4 @@ jobs:
       
       - name: Notify Telegram
         run: |
-          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=✅ Пацанский+пайплайн+заработал!"
+          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN 2.0 }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=✅ Пацанский+пайплайн+заработал!"
