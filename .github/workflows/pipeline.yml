@@ -4,14 +4,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Verify Secrets
-      
-    run: 
-    echo "Проверка токена: ${{ secrets.TELEGRAM_BOT_TOKEN != '8194985927:AAHcabrpuNgdEIztL03S7pEDr3dMvLWV4Gg' }}"
-    echo "Проверка Chat ID: ${{ secrets.TELEGRAM_CHAT_ID != '731416386' }}"
-      - name: Print Hello DevOps
-        run: echo "Привет из Могилёва! Я запустил пайплайн!"
-      
-      - name: Notify Telegram
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Test secrets
         run: |
-          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=✅ Пацанский+пайплайн+заработал!" 
+          echo "Токен установлен: ${{ secrets.TELEGRAM_BOT_TOKEN != '' }}"
+          echo "Chat ID установлен: ${{ secrets.TELEGRAM_CHAT_ID != '' }}"
+          
+      - name: Send real message
+        run: |
+          curl -s "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage?chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=✅+Пайплайн+в+$GITHUB_REPOSITORY+работает!"
